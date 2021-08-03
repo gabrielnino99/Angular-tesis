@@ -5,21 +5,21 @@ const mongoose = require('mongoose');
 const Adoptante = require('./models/adoptante');
 //Initilizations
 const app = express();
+const url = "mongodb+srv://gabokid:bg1CbQvQEvqavI4w@cluster0.igejl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{
+    console.log("Conectado a la BD");
+})
+.catch(()=>{
+    console.log("Conexión fallida");
+});
+
+
 
 //Settings
 
 //Middlewares
-
-//Global variables
-
-//Routes
-
-//Static Files
-
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-
-
 app.use((req, res, next) =>{
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -30,6 +30,9 @@ app.use((req, res, next) =>{
         "GET, POST, PATCH, DELETE, OPTIONS");
     next();
 });
+//Global variables
+
+//Routes
 
 app.get('/', (req, res) => {
     res.send({});
@@ -40,5 +43,15 @@ app.get('/login', (req, res) => {
     res.send([1,2,3]);
     console.log("Dentro de login")
 });
+
+//Static Files
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+
+
+
+
 
 module.exports = app;
