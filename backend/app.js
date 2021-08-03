@@ -1,6 +1,24 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
+
+const Adoptante = require('./models/adoptante');
+//Initilizations
 const app = express();
+
+//Settings
+
+//Middlewares
+
+//Global variables
+
+//Routes
+
+//Static Files
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 
 app.use((req, res, next) =>{
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -16,7 +34,6 @@ app.use((req, res, next) =>{
 app.get('/', (req, res) => {
     res.send({});
     console.log("Funciona");
-    next();
 });
 
 app.get('/login', (req, res) => {
