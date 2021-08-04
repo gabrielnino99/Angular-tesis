@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const userRoutes = require ("./routes/user");
 
 const Adoptante = require('./models/adoptante');
 //Initilizations
@@ -44,10 +45,13 @@ app.get('/login', (req, res) => {
     console.log("Dentro de login")
 });
 
+
 //Static Files
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+//app.use("/api/user", userRoutes);
 
 
 

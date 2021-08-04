@@ -7,12 +7,14 @@
             <h1>Iniciar sesión</h1>
             <label class = "colorLabel">Escoja el tipo de usuario a iniciar sesión</label>
             <h1></h1>
-            <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Fundación</mat-radio-button>
-                <mat-radio-button value="2">Adoptante</mat-radio-button>
+            <mat-radio-group aria-label="Select an option" >
+                <mat-radio-button value="1" >Fundación</mat-radio-button>
+                <mat-radio-button value="2" >Adoptante</mat-radio-button>
+                
               </mat-radio-group>
+
             <mat-form-field class = "ancho" appearance="fill" >
-                <mat-label>Ingrese su usuario</mat-label>
+                <mat-label>Ingrese su correo electrónico</mat-label>
                 <input matInput autocomplete="off" formControlName ="usuario"> <!--este usuario hace referencia a la propiedad usuario del login component ts-->
             </mat-form-field>
             <mat-form-field class = "ancho" appearance="fill">

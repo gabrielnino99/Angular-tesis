@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
   {
     const usuario = this.form.value.usuario;
     const password = this.form.value.contrasena;
-    if(usuario == 'FelipeVan' && password == '12345' )
+    
+    if(usuario == 'FelipeVan' && password == '12345')
     {
       this.exito(usuario);
     }
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
     {
       this.error();
     }
+    console.log(this.form.value); 
   }
   error()
   {
