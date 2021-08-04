@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const userRoutes = require ("./routes/user");
-
+const adoptanteRoutes = require ("./routes/adoptante");
 const Adoptante = require('./models/adoptante');
+
 //Initilizations
 const app = express();
 const url = "mongodb+srv://gabokid:bg1CbQvQEvqavI4w@cluster0.igejl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -43,19 +43,16 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.send([1,2,3]);
     console.log("Dentro de login")
+    next();
 });
 
 
+
+app.use("/crear-cuenta/crear-adoptante", adoptanteRoutes);
 //Static Files
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
-//app.use("/api/user", userRoutes);
-
-
-
-
 
 
 module.exports = app;
