@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require ('bcrypt');
 
 const adoptanteRoutes = require ("./routes/adoptante");
 const Adoptante = require('./models/adoptante');
+const saltRounds = 10;
 
 //Initilizations
 const app = express();
@@ -19,6 +21,9 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 
 
 //Settings
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 //Middlewares
 app.use((req, res, next) =>{
@@ -43,16 +48,41 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.send([1,2,3]);
     console.log("Dentro de login")
-    next();
-});
+    //next();
+});                                                     
 
+app.post("/crear-cuenta/crear-adoptante", async (req, res, next) =>{
+    bcrypt.hash(req.body.password, 10)
+    .then(function(hash) {
+        const adoptante = new Adoptante({
+            nombre: req.body.nombre,
+            apellidos: req.body.apellidos,
+            fecha_nacimiento: req.body.fecha_nacimiento,
+            genero: req.body.genero,
+            localidad: req.body.localidad,
+            correo: req.body.correo,
+            num_celular: req.body.num_celular,
+            password: hash
+        });
+        adoptante.save()
+        .then(result => {
+            res.status(201).json({
+                message: 'Adoptante creado',
+                result: result
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+    });
+});
 
 
 app.use("/crear-cuenta/crear-adoptante", adoptanteRoutes);
 //Static Files
 
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 
 
 module.exports = app;

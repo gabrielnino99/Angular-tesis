@@ -15,4 +15,6 @@ const schema_adoptante = mongoose.Schema({
 
 schema_adoptante.plugin(uniqueValidator);
 
+
+
 module.exports = mongoose.model('Adoptante', schema_adoptante);

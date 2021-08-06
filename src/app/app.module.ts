@@ -12,6 +12,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.component';
 import { CrearAdoptanteComponent } from './components/crear-cuenta/crear-adoptante/crear-adoptante.component';
 import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundacion/crear-fundacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundaci
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
