@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-crear-cuenta',
@@ -12,4 +14,6 @@ export class CrearCuentaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
 }
